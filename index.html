@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,8 +8,34 @@
 </head>
 <body>
   <div class="container">
-    <img src="logo.png" class="logo" alt="Logo Quiniela" />
-    <div id="partidos"></div>
+    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+    <h1>Quiniela Champions</h1>
+    
+    <div class="partido">
+      <img src="logos/real_madrid.png" alt="Real Madrid">
+      <span>REAL MADRID vs ARSENAL</span>
+      <input type="number" placeholder="1" />
+      <input type="number" placeholder="1" />
+    </div>
+    <div class="partido">
+      <img src="logos/barcelona.png" alt="Barcelona">
+      <span>BARCELONA vs BORUSSIA DORTMUND</span>
+      <input type="number" placeholder="1" />
+      <input type="number" placeholder="1" />
+    </div>
+    <div class="partido">
+      <img src="logos/paris.png" alt="Paris SG">
+      <span>PARIS STG vs ASTON VILLA</span>
+      <input type="number" placeholder="1" />
+      <input type="number" placeholder="1" />
+    </div>
+    <div class="partido">
+      <img src="logos/inter.png" alt="Inter Milan">
+      <span>INTER MILAN vs BAYERN MUNICH</span>
+      <input type="number" placeholder="1" />
+      <input type="number" placeholder="1" />
+    </div>
+    
     <div class="form">
       <input type="text" placeholder="Nombre de usuario" id="nombre"/>
       <input type="text" placeholder="Número de WhatsApp" id="whatsapp"/>
@@ -18,6 +43,8 @@
       <button onclick="revisarPuntaje()">REVISAR PUNTAJE</button>
     </div>
   </div>
+  
   <script src="script.js"></script>
 </body>
 </html>
+

@@ -1,43 +1,95 @@
-
 body {
   margin: 0;
   padding: 0;
   font-family: Arial, sans-serif;
-  background-image: url('fondo.png');
+  background-image: url('logos/fondo.png'); /* Fondo adaptado */
   background-size: cover;
   color: white;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }
+
 .container {
   background-color: rgba(0, 0, 0, 0.65);
   padding: 20px;
+  border-radius: 15px;
+  max-width: 400px;
+  width: 100%;
+  margin-top: 20px;
 }
+
 .logo {
-  width: 250px;
+  width: 200px;
   margin: 20px auto;
 }
-.partido {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+h1 {
+  font-size: 1.8rem;
+  color: #fff;
   margin: 10px 0;
 }
+
+.partido {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px 0;
+  font-size: 1.2rem;
+  color: white;
+}
+
 .partido img {
-  width: 50px;
-  margin: 0 10px;
+  width: 35px;
 }
-input[type='number'], input[type='text'] {
-  width: 60px;
-  margin: 5px;
-  padding: 5px;
+
+input[type="text"], input[type="number"] {
+  width: 90%;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 }
+
 button {
   display: block;
+  width: 90%;
   margin: 10px auto;
-  padding: 10px 20px;
-  background: limegreen;
-  border: none;
+  padding: 12px;
+  background-color: limegreen;
   color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
   cursor: pointer;
   font-weight: bold;
+}
+
+button:hover {
+  background-color: darkgreen;
+}
+
+@media screen and (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .logo {
+    width: 180px;
+  }
+
+  .partido {
+    font-size: 1rem;
+  }
+
+  input[type="text"], input[type="number"] {
+    width: 85%;
+  }
+
+  button {
+    font-size: 1rem;
+  }
 }
