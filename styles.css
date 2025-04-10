@@ -1,95 +1,104 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: Arial, sans-serif;
-  background-image: url('logos/fondo.png'); /* Fondo adaptado */
+  font-family: 'Arial', sans-serif;
+  background-image: url('logos/fondo.png');
   background-size: cover;
+  background-position: center;
   color: white;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
 }
 
 .container {
-  background-color: rgba(0, 0, 0, 0.65);
   padding: 20px;
-  border-radius: 15px;
-  max-width: 400px;
-  width: 100%;
-  margin-top: 20px;
+  max-width: 600px;
+  margin: auto;
 }
 
 .logo {
-  width: 200px;
+  width: 80%;
+  max-width: 250px;
+  display: block;
   margin: 20px auto;
 }
 
-h1 {
-  font-size: 1.8rem;
-  color: #fff;
-  margin: 10px 0;
+.fecha {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 5px 10px;
+  margin-top: 15px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 10px;
 }
 
 .partido {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
-  margin: 15px 0;
-  font-size: 1.2rem;
-  color: white;
+  background-color: rgba(0, 0, 0, 0.65);
+  padding: 15px;
+  margin: 10px 0;
+  border-radius: 15px;
+  flex-wrap: wrap;
 }
 
-.partido img {
-  width: 35px;
+.equipo {
+  text-align: center;
+  width: 40%;
 }
 
-input[type="text"], input[type="number"] {
-  width: 90%;
-  margin: 8px 0;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+.equipo img {
+  width: 60px;
+  margin-bottom: 5px;
 }
 
-button {
+.equipo span {
   display: block;
-  width: 90%;
-  margin: 10px auto;
-  padding: 12px;
-  background-color: limegreen;
-  color: white;
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.equipo input {
+  width: 50px;
+  padding: 5px;
+  border-radius: 8px;
   border: none;
-  border-radius: 5px;
-  font-size: 1.1rem;
-  cursor: pointer;
+  text-align: center;
+}
+
+.vs {
+  font-size: 1.2em;
   font-weight: bold;
 }
 
-button:hover {
-  background-color: darkgreen;
+.formulario {
+  text-align: center;
+  margin-top: 20px;
 }
 
-@media screen and (max-width: 480px) {
-  h1 {
-    font-size: 1.5rem;
-  }
+input[type="text"] {
+  width: 80%;
+  max-width: 300px;
+  margin: 10px auto;
+  display: block;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  font-size: 1em;
+}
 
-  .logo {
-    width: 180px;
-  }
+button {
+  background-color: #32cd32;
+  color: white;
+  font-weight: bold;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 10px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
 
-  .partido {
-    font-size: 1rem;
-  }
-
-  input[type="text"], input[type="number"] {
-    width: 85%;
-  }
-
-  button {
-    font-size: 1rem;
-  }
+button:hover {
+  background-color: #28a428;
 }
