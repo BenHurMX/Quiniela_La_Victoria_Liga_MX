@@ -9,45 +9,52 @@
 <body>
   <div class="container">
     <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+    <h1>Quiniela Champions</h1>
     
-    <div class="fecha">Martes 15, 2025 | 01:00 PM</div>
     <div class="partido">
-      <div class="equipo">
-        <img src="logos/real_madrid.png" alt="Real Madrid" />
-        <span>REAL MADRID</span>
-        <input type="number" min="0" />
-      </div>
-      <span class="vs">VS</span>
-      <div class="equipo">
-        <img src="logos/arsenal.png" alt="Arsenal" />
-        <span>ARSENAL</span>
-        <input type="number" min="0" />
+      <img src="logos/real_madrid.png" alt="Real Madrid">
+      <span>REAL MADRID vs ARSENAL</span>
+      <div>
+        <input type="number" placeholder="RM" />
+        <input type="number" placeholder="ARS" />
       </div>
     </div>
-
-    <div class="fecha">Martes 15, 2025 | 01:00 PM</div>
+    
     <div class="partido">
-      <div class="equipo">
-        <img src="logos/barcelona.png" alt="Barcelona" />
-        <span>BARCELONA</span>
-        <input type="number" min="0" />
-      </div>
-      <span class="vs">VS</span>
-      <div class="equipo">
-        <img src="logos/dortmund.png" alt="Dortmund" />
-        <span>DORTMUND</span>
-        <input type="number" min="0" />
+      <img src="logos/barcelona.png" alt="Barcelona">
+      <span>BARCELONA vs BORUSSIA DORTMUND</span>
+      <div>
+        <input type="number" placeholder="BAR" />
+        <input type="number" placeholder="DOR" />
       </div>
     </div>
-
-    <!-- Puedes seguir agregando más partidos -->
-
-    <div class="formulario">
-      <input type="text" placeholder="Nombre de usuario" id="nombre" />
-      <input type="text" placeholder="Número de WhatsApp" id="whatsapp" />
+    
+    <div class="partido">
+      <img src="logos/paris.png" alt="Paris SG">
+      <span>PARIS STG vs ASTON VILLA</span>
+      <div>
+        <input type="number" placeholder="PSG" />
+        <input type="number" placeholder="AVL" />
+      </div>
+    </div>
+    
+    <div class="partido">
+      <img src="logos/inter.png" alt="Inter Milan">
+      <span>INTER MILAN vs BAYERN MUNICH</span>
+      <div>
+        <input type="number" placeholder="INT" />
+        <input type="number" placeholder="BMU" />
+      </div>
+    </div>
+    
+    <div class="form">
+      <input type="text" placeholder="Nombre de usuario" id="nombre"/>
+      <input type="text" placeholder="Número de WhatsApp" id="whatsapp"/>
       <button onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+      <button onclick="revisarPuntaje()">REVISAR PUNTAJE</button>
     </div>
   </div>
+  
   <script src="script.js"></script>
 </body>
 </html>

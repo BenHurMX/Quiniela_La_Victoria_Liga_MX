@@ -1,34 +1,31 @@
-
-const partidos = [
-  { local: "Real Madrid", visitante: "Arsenal", logoLocal: "madrid.png", logoVisitante: "arsenal.png" },
-  { local: "Barcelona", visitante: "Borussia Dortmund", logoLocal: "barecelona.png", logoVisitante: "borusia.png" },
-  { local: "Paris STG", visitante: "Aston Villa", logoLocal: "paris.png", logoVisitante: "aston.png" },
-  { local: "Inter Mila", visitante: "Bayern Munich", logoLocal: "inter.png", logoVisitante: "bayer.png" },
-];
-
-function renderPartidos() {
-  const container = document.getElementById("partidos");
-  partidos.forEach((p, index) => {
-    container.innerHTML += `
-      <div class="partido">
-        <span>${p.local}</span>
-        <img src="logos/${p.logoLocal}" alt="${p.local}" />
-        <input type="number" id="local-${index}" min="0" />
-        <span>VS</span>
-        <input type="number" id="visitante-${index}" min="0" />
-        <img src="logos/${p.logoVisitante}" alt="${p.visitante}" />
-        <span>${p.visitante}</span>
-      </div>
-    `;
-  });
-}
-
 function enviarQuiniela() {
-  alert("Tu quiniela fue enviada. Envíanos el comprobante de pago por WhatsApp para activarla.");
+  const nombre = document.getElementById("nombre").value.trim();
+  const whatsapp = document.getElementById("whatsapp").value.trim();
+  const inputs = document.querySelectorAll("input[type='number']");
+  let resultados = [];
+
+  if (!nombre || !whatsapp) {
+    alert("Por favor, ingresa tu nombre y número de WhatsApp.");
+    return;
+  }
+
+  inputs.forEach((input, index) => {
+    const valor = input.value.trim();
+    if (valor === "") {
+      alert("Por favor, completa todos los campos de los partidos.");
+      return;
+    }
+    resultados.push(valor);
+  });
+
+  // Aquí simulas el envío de los datos. Puedes usar fetch() para enviarlos a un backend si tienes.
+  console.log("Nombre:", nombre);
+  console.log("WhatsApp:", whatsapp);
+  console.log("Resultados:", resultados);
+
+  alert("¡Tu quiniela ha sido enviada exitosamente!");
 }
 
 function revisarPuntaje() {
-  alert("Aquí se mostrarán los puntajes en tiempo real (próximamente).");
+  alert("Esta función estará disponible próximamente 😎");
 }
-
-renderPartidos();
