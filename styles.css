@@ -37,34 +37,52 @@ h1 {
 
 .partido {
   display: flex;
+  flex-direction: column; /* Cambia a disposición vertical */
   align-items: center;
-  justify-content: space-between;
   margin: 20px 0;
   background-color: rgba(255, 255, 255, 0.1);
   padding: 10px;
   border-radius: 10px;
 }
 
-.partido img {
+.partido .equipos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.partido .equipo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%; /* Cada equipo ocupa el 45% del ancho */
+}
+
+.partido .equipo img {
   width: 50px;
   height: 50px;
   border-radius: 50%; /* Hace que los logos sean circulares */
-  object-fit: cover; /* Asegura que la imagen se ajuste dentro del círculo */
-  border: 2px solid white; /* Opcional: agrega un borde blanco alrededor del logo */
+  object-fit: cover; /* Ajusta la imagen dentro del círculo */
+  border: 2px solid white; /* Opcional: agrega un borde blanco */
+  margin-bottom: 5px;
 }
-.partido span {
-  flex: 1;
-  text-align: center;
-  font-size: 1rem;
+
+.partido .equipo span {
+  font-size: 0.9rem;
   color: white;
+  text-align: center;
 }
 
-.partido div {
+.partido .inputs {
   display: flex;
+  justify-content: center;
+  align-items: center;
   gap: 10px;
+  margin: 10px 0;
 }
 
-input[type="number"] {
+.partido .inputs input[type="number"] {
   width: 50px;
   padding: 5px;
   border-radius: 5px;
