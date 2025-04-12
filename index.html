@@ -1,108 +1,164 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
+<head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Quiniela La Victoria - Champions</title>
-    
+
     <!-- Fuente Bebas Neue de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-    
+
     <!-- Tu hoja de estilos -->
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  
+</head>
+
 <body>
-  <div class="container">
-    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-    <h1>Semifinales Champions League 2025</h1>
-    
-    <!-- Partido 1 -->
-    <div class="partido">
-      <div class="equipos">
-        <!-- Equipo local -->
-        <div class="equipo">
-          <img src="logos/madrid.png" alt="Real Madrid">
-          <span>REAL MADRID</span>
+    <div class="container">
+        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+        <h1>Semifinales Champions League 2025</h1>
+
+        <!-- Partido 1 -->
+        <div class="partido">
+            <div class="equipos">
+                <!-- Equipo local -->
+                <div class="equipo">
+                    <img src="logos/madrid.png" alt="Real Madrid">
+                    <span>REAL MADRID</span>
+                </div>
+
+                <!-- Inputs para los goles -->
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+
+                <!-- Equipo visitante -->
+                <div class="equipo">
+                    <img src="logos/arsenal.png" alt="Arsenal">
+                    <span>ARSENAL</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Inputs para los goles -->
-        <div class="inputs">
-          <input type="number" placeholder="0" min="0" />
-          <input type="number" placeholder="0" min="0" />
+        <!-- Partido 2 -->
+        <div class="partido">
+            <div class="equipos">
+                <div class="equipo">
+                    <img src="logos/barecelona.png" alt="Barcelona">
+                    <span>BARCELONA</span>
+                </div>
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+                <div class="equipo">
+                    <img src="logos/borusia.png" alt="Borussia Dortmund">
+                    <span>BORUSSIA DORTMUND</span>
+                </div>
+            </div>
         </div>
 
-        <!-- Equipo visitante -->
-        <div class="equipo">
-          <img src="logos/arsenal.png" alt="Arsenal">
-          <span>ARSENAL</span>
+        <!-- Partido 3 -->
+        <div class="partido">
+            <div class="equipos">
+                <div class="equipo">
+                    <img src="logos/paris.png" alt="Paris SG">
+                    <span>PARIS STG</span>
+                </div>
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+                <div class="equipo">
+                    <img src="logos/aston.png" alt="Aston Villa">
+                    <span>ASTON VILLA</span>
+                </div>
+            </div>
         </div>
-      </div>
+
+        <!-- Partido 4 -->
+        <div class="partido">
+            <div class="equipos">
+                <div class="equipo">
+                    <img src="logos/inter.png" alt="Inter Milan">
+                    <span>INTER MILAN</span>
+                </div>
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+                <div class="equipo">
+                    <img src="logos/bayer.png" alt="Bayern Munich">
+                    <span>BAYERN MUNICH</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+        <div class="form">
+            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+            <button onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+            <!-- <button onclick="revisarPuntaje()">REVISAR PUNTAJE</button> -->
+        </div>
     </div>
-    
-    <!-- Partido 2 -->
-    <div class="partido">
-      <div class="equipos">
-        <div class="equipo">
-          <img src="logos/barecelona.png" alt="Barcelona">
-          <span>BARCELONA</span>
-        </div>
-        <div class="inputs">
-          <input type="number" placeholder="0" min="0" />
-          <input type="number" placeholder="0" min="0" />
-        </div>
-        <div class="equipo">
-          <img src="logos/borusia.png" alt="Borussia Dortmund">
-          <span>BORUSSIA DORTMUND</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Partido 3 -->
-    <div class="partido">
-      <div class="equipos">
-        <div class="equipo">
-          <img src="logos/paris.png" alt="Paris SG">
-          <span>PARIS STG</span>
-        </div>
-        <div class="inputs">
-          <input type="number" placeholder="0" min="0" />
-          <input type="number" placeholder="0" min="0" />
-        </div>
-        <div class="equipo">
-          <img src="logos/aston.png" alt="Aston Villa">
-          <span>ASTON VILLA</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Partido 4 -->
-    <div class="partido">
-      <div class="equipos">
-        <div class="equipo">
-          <img src="logos/inter.png" alt="Inter Milan">
-          <span>INTER MILAN</span>
-        </div>
-        <div class="inputs">
-          <input type="number" placeholder="0" min="0" />
-          <input type="number" placeholder="0" min="0" />
-        </div>
-        <div class="equipo">
-          <img src="logos/bayer.png" alt="Bayern Munich">
-          <span>BAYERN MUNICH</span>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Formulario -->
-    <div class="form">
-      <input type="text" placeholder="Nombre de usuario" id="nombre"/>
-      <input type="text" placeholder="Número de WhatsApp" id="whatsapp"/>
-      <button onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-      <button onclick="revisarPuntaje()">REVISAR PUNTAJE</button>
-    </div>
-  </div>
-  
-  <script src="script.js"></script>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+        // Your web app's Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC9CKF9N6eBcxTrPTP2LE7RF-ep657dohs",
+            authDomain: "quiniela-la-victoria-46bc3.firebaseapp.com",
+            projectId: "quiniela-la-victoria-46bc3",
+            storageBucket: "quiniela-la-victoria-46bc3.appspot.com",
+            messagingSenderId: "13863862689",
+            appId: "1:13863862689:web:d026cefdefbbcd7c46cbe0"
+        };
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        window.enviarQuiniela = async function () {
+            const nombre = document.getElementById("nombre").value;
+            const whatsapp = document.getElementById("whatsapp").value;
+
+            // Obtener los marcadores de los partidos
+            const partidos = document.querySelectorAll('.partido');
+            const resultados = [];
+
+            partidos.forEach(partido => {
+                const marcadores = partido.querySelectorAll('.marcador');
+                resultados.push({
+                    local: parseInt(marcadores[0].value) || 0,
+                    visitante: parseInt(marcadores[1].value) || 0
+                });
+            });
+
+            try {
+                await addDoc(collection(db, "participantes"), {
+                    nombre,
+                    whatsapp,
+                    resultados,
+                    puntos: 0 // Puedes inicializar los puntos en 0
+                });
+
+                alert("¡Quiniela enviada con éxito!"); // Mensaje de éxito
+                // Limpiar el formulario
+                document.getElementById("nombre").value = "";
+                document.getElementById("whatsapp").value = "";
+                document.querySelectorAll('.marcador').forEach(marcador => marcador.value = "");
+
+            } catch (error) {
+                console.error("Error al enviar la quiniela:", error);
+                alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo."); // Mensaje de error
+            }
+        }
+    </script>
 </body>
+
 </html>
