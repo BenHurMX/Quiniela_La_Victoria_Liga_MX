@@ -121,6 +121,39 @@ h1 {
   background-color: #c9003b;
 }
 
+/* Tabla de participantes */
+#tabla-general {
+  margin-top: 30px;
+}
+
+#lista-participantes {
+  list-style: none;
+  padding: 0;
+}
+
+#lista-participantes li {
+  margin-bottom: 15px;
+  color: white;
+  font-size: 16px;
+  text-align: left;
+}
+
+/* Contenedor de la barra de progreso */
+.progress-container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  height: 20px;
+  margin-top: 5px;
+}
+
+/* Barra de progreso */
+.progress-bar {
+  background-color: #ff004c;
+  height: 100%;
+  transition: width 0.3s ease;
+}
+
 /* Estilo responsivo para pantallas pequeñas */
 @media (max-width: 500px) {
   .inputs {
@@ -129,5 +162,14 @@ h1 {
 
   .inputs input {
     margin: 0 5px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  .button {
+    font-size: 14px;
+    padding: 10px;
   }
 }
