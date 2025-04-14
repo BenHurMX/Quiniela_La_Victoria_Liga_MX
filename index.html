@@ -188,6 +188,23 @@
             }
             document.getElementById("mi-quiniela").style.display = "block";
         };
+
+        window.mostrarTablaParticipantes = async function () {
+            const lista = document.getElementById("lista-participantes");
+            lista.innerHTML = "";
+
+            const querySnapshot = await getDocs(collection(db, "participantes"));
+            querySnapshot.forEach(doc => {
+                const data = doc.data();
+                const puntos = data.puntos || 0;
+                const item = document.createElement("li");
+                item.textContent = `${data.nombre || "Sin nombre"} - ${puntos} puntos`;
+                lista.appendChild(item);
+            });
+        };
+
+        // Cargar la tabla de participantes al cargar la página
+        mostrarTablaParticipantes();
     </script>
 </body>
 </html>
