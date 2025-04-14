@@ -20,19 +20,14 @@
         <!-- Partido 1 -->
         <div class="partido">
             <div class="equipos">
-                <!-- Equipo local -->
                 <div class="equipo">
                     <img src="logos/madrid.png" alt="Real Madrid">
                     <span>REAL MADRID</span>
                 </div>
-
-                <!-- Inputs para los goles -->
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
-
-                <!-- Equipo visitante -->
                 <div class="equipo">
                     <img src="logos/arsenal.png" alt="Arsenal">
                     <span>ARSENAL</span>
@@ -98,31 +93,28 @@
         <div class="form">
             <input type="text" placeholder="Nombre de usuario" id="nombre" required />
             <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
-            <button onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-            <!-- <button onclick="revisarPuntaje()">REVISAR PUNTAJE</button> -->
+            <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
         </div>
-        <button onclick="verMiQuiniela()" class="ver-btn">Ver mi Quiniela</button>
+        <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
 
-<div id="mi-quiniela" style="display: none;">
-  <h2>Tu Quiniela</h2>
-  <ul id="lista-mi-quiniela"></ul>
-</div>
+        <div id="mi-quiniela" style="display: none;">
+            <h2>Tu Quiniela</h2>
+            <ul id="lista-mi-quiniela"></ul>
+        </div>
 
-<hr/>
+        <hr/>
 
-<div id="tabla-general">
-  <h2>Tabla de Participantes</h2>
-  <ul id="lista-participantes"></ul>
-</div>
+        <div id="tabla-general">
+            <h2>Tabla de Participantes</h2>
+            <ul id="lista-participantes"></ul>
+        </div>
     </div>
 
     <!-- Firebase SDK -->
     <script type="module">
-        // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-        // Your web app's Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyC9CKF9N6eBcxTrPTP2LE7RF-ep657dohs",
             authDomain: "quiniela-la-victoria-46bc3.firebaseapp.com",
@@ -132,7 +124,6 @@
             appId: "1:13863862689:web:d026cefdefbbcd7c46cbe0"
         };
 
-        // Initialize Firebase
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
 
@@ -140,7 +131,6 @@
             const nombre = document.getElementById("nombre").value;
             const whatsapp = document.getElementById("whatsapp").value;
 
-            // Obtener los marcadores de los partidos
             const partidos = document.querySelectorAll('.partido');
             const resultados = [];
 
@@ -157,21 +147,47 @@
                     nombre,
                     whatsapp,
                     resultados,
-                    puntos: 0 // Puedes inicializar los puntos en 0
+                    puntos: 0
                 });
 
-                alert("¡Quiniela enviada con éxito!"); // Mensaje de éxito
-                // Limpiar el formulario
+                alert("¡Quiniela enviada con éxito!");
                 document.getElementById("nombre").value = "";
                 document.getElementById("whatsapp").value = "";
                 document.querySelectorAll('.marcador').forEach(marcador => marcador.value = "");
-
             } catch (error) {
                 console.error("Error al enviar la quiniela:", error);
-                alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo."); // Mensaje de error
+                alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo.");
             }
-        }
+        };
+
+        window.verMiQuiniela = async function () {
+            const nombre = document.getElementById("nombre").value;
+            if (!nombre) {
+                alert("Por favor escribe tu nombre");
+                return;
+            }
+
+            const lista = document.getElementById("lista-mi-quiniela");
+            lista.innerHTML = "";
+
+            const q = query(collection(db, "participantes"), where("nombre", "==", nombre));
+            const querySnapshot = await getDocs(q);
+
+            if (querySnapshot.empty) {
+                lista.innerHTML = "<li>No se encontró tu quiniela</li>";
+            } else {
+                querySnapshot.forEach(doc => {
+                    const data = doc.data();
+                    const resultados = data.resultados || [];
+                    resultados.forEach((res, i) => {
+                        const item = document.createElement("li");
+                        item.textContent = `Partido ${i + 1}: ${res.local} - ${res.visitante}`;
+                        lista.appendChild(item);
+                    });
+                });
+            }
+            document.getElementById("mi-quiniela").style.display = "block";
+        };
     </script>
 </body>
-
 </html>

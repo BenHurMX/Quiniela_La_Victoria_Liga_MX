@@ -1,3 +1,4 @@
+/* Estilo general del cuerpo */
 body {
   background-image: url("logos/fondo.png");
   background-size: cover;
@@ -12,6 +13,7 @@ body {
   min-height: 100vh;
 }
 
+/* Contenedor principal */
 .container {
   backdrop-filter: blur(10px);
   background-color: rgba(255, 255, 255, 0.1);
@@ -24,17 +26,20 @@ body {
   color: white;
 }
 
+/* Logo */
 .logo {
   width: 150px;
   margin-bottom: 20px;
 }
 
+/* Título principal */
 h1 {
   font-size: 28px;
   margin-bottom: 25px;
   color: white;
 }
 
+/* Estilo de cada partido */
 .partido {
   display: flex;
   flex-direction: column;
@@ -45,6 +50,7 @@ h1 {
   background-color: rgba(255, 255, 255, 0.05);
 }
 
+/* Contenedor de equipos */
 .equipos {
   display: flex;
   justify-content: space-around;
@@ -52,6 +58,7 @@ h1 {
   flex-wrap: wrap;
 }
 
+/* Estilo de cada equipo */
 .equipo {
   display: flex;
   flex-direction: column;
@@ -65,6 +72,7 @@ h1 {
   margin-bottom: 5px;
 }
 
+/* Inputs para los marcadores */
 .inputs {
   display: flex;
   flex-direction: column;
@@ -81,6 +89,7 @@ h1 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
+/* Formulario */
 .form {
   margin-top: 30px;
   display: flex;
@@ -95,7 +104,8 @@ h1 {
   background-color: rgba(255, 255, 255, 0.8);
 }
 
-.form button {
+/* Botones generales */
+.button {
   background-color: #ff004c;
   color: white;
   padding: 12px;
@@ -107,10 +117,11 @@ h1 {
   margin-top: 10px;
 }
 
-.form button:hover {
+.button:hover {
   background-color: #c9003b;
 }
 
+/* Estilo responsivo para pantallas pequeñas */
 @media (max-width: 500px) {
   .inputs {
     flex-direction: row;
