@@ -57,6 +57,26 @@ window.enviarQuiniela = async function () {
       });
   });
 
+  try {
+      // Guarda los datos en Firestore
+      await addDoc(collection(db, "participantes"), {
+          nombre: nombre,
+          whatsapp: whatsapp,
+          resultados: resultados,
+          timestamp: new Date() // Agrega un timestamp para ordenar los documentos si es necesario
+      });
+
+      alert("¡Quiniela enviada con éxito!");
+      document.getElementById("nombre").value = "";
+      document.getElementById("whatsapp").value = "";
+      document.getElementById("comprobante").value = "";
+      document.querySelectorAll('.marcador').forEach(marcador => marcador.value = "");
+  } catch (error) {
+      console.error("Error al enviar la quiniela:", error);
+      alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo.");
+  }
+};
+
   window.verMiQuiniela = function () {
     // Oculta el contenedor principal y muestra el contenedor de "mi quiniela"
     document.getElementById("quiniela-container").style.display = "none";
@@ -89,8 +109,8 @@ window.enviarQuiniela = async function () {
   } catch (error) {
       console.error("Error al enviar la quiniela:", error);
       alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo.");
-  }
-};
+  };
+  
 window.mostrarMarcadorReal = async function () {
     document.getElementById("quiniela-container").style.display = "none";
     document.getElementById("marcador-real").style.display = "block";
