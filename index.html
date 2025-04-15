@@ -91,146 +91,53 @@
         </div>
 
         <!-- Formulario -->
-        <div class="form">
-            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
-            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
-            <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-        </div>
-        <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
-        <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
+<!-- Formulario -->
+<div class="form">
+    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+    <label for="comprobante">Adjuntar comprobante de transferencia:</label>
+    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
+    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+</div>
+<button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
+<button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
+<button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
 
-        <div id="mi-quiniela" style="display: none;">
-            <h2>Tu Quiniela</h2>
-            <ul id="lista-mi-quiniela"></ul>
-        </div>
+<div id="mi-quiniela" style="display: none;">
+    <h2>Tu Quiniela</h2>
+    <ul id="lista-mi-quiniela"></ul>
+    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+</div>
 
-        <hr/>
+<hr />
 
-        <div id="tabla-general">
-            <h2>Tabla de Participantes</h2>
-            <ul id="lista-participantes"></ul>
-        </div>
+       
     </div>
 
-    <!-- Contenedor de resultados detallados -->
-    <div class="container" id="resultados-detallados" style="display: none;">
+    <!-- Contenedor de marcador real -->
+    <div class="container" id="marcador-real" style="display: none;">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-        <h1>Resultados Detallados</h1>
+        <h1>Marcador Real</h1>
 
-        <div id="resultados">
-            <ul id="lista-resultados"></ul>
+        <div id="puntos">
+            <ul id="lista-puntos"></ul>
         </div>
 
         <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
     </div>
+<!-- Contenedor de resultados detallados -->
+<div class="container" id="resultados-detallados" style="display: none;">
+    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+    <h1>Resultados Detallados</h1>
+
+    <div id="detalles">
+        <ul id="lista-detallada"></ul>
+    </div>
+
+    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+</div>
 
     <!-- Firebase SDK -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-        import { getFirestore, collection, addDoc, getDocs, query, where } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-        const firebaseConfig = {
-            apiKey: "AIzaSyC9CKF9N6eBcxTrPTP2LE7RF-ep657dohs",
-            authDomain: "quiniela-la-victoria-46bc3.firebaseapp.com",
-            projectId: "quiniela-la-victoria-46bc3",
-            storageBucket: "quiniela-la-victoria-46bc3.appspot.com",
-            messagingSenderId: "13863862689",
-            appId: "1:13863862689:web:d026cefdefbbcd7c46cbe0"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const db = getFirestore(app);
-
-        window.enviarQuiniela = async function () {
-            const nombre = document.getElementById("nombre").value;
-            const whatsapp = document.getElementById("whatsapp").value;
-
-            const partidos = document.querySelectorAll('.partido');
-            const resultados = [];
-
-            partidos.forEach(partido => {
-                const marcadores = partido.querySelectorAll('.marcador');
-                resultados.push({
-                    local: parseInt(marcadores[0].value) || 0,
-                    visitante: parseInt(marcadores[1].value) || 0
-                });
-            });
-
-            try {
-                await addDoc(collection(db, "participantes"), {
-                    nombre,
-                    whatsapp,
-                    resultados,
-                    puntos: 0
-                });
-
-                alert("¡Quiniela enviada con éxito!");
-                document.getElementById("nombre").value = "";
-                document.getElementById("whatsapp").value = "";
-                document.querySelectorAll('.marcador').forEach(marcador => marcador.value = "");
-            } catch (error) {
-                console.error("Error al enviar la quiniela:", error);
-                alert("Error al enviar la quiniela. Por favor, inténtalo de nuevo.");
-            }
-        };
-
-        window.verMiQuiniela = async function () {
-            const nombre = document.getElementById("nombre").value;
-            if (!nombre) {
-                alert("Por favor escribe tu nombre");
-                return;
-            }
-
-            const lista = document.getElementById("lista-mi-quiniela");
-            lista.innerHTML = "";
-
-            const q = query(collection(db, "participantes"), where("nombre", "==", nombre));
-            const querySnapshot = await getDocs(q);
-
-            if (querySnapshot.empty) {
-                lista.innerHTML = "<li>No se encontró tu quiniela</li>";
-            } else {
-                querySnapshot.forEach(doc => {
-                    const data = doc.data();
-                    const resultados = data.resultados || [];
-                    resultados.forEach((res, i) => {
-                        const item = document.createElement("li");
-                        item.textContent = `Partido ${i + 1}: ${res.local} - ${res.visitante}`;
-                        lista.appendChild(item);
-                    });
-                });
-            }
-            document.getElementById("mi-quiniela").style.display = "block";
-        };
-
-        window.mostrarResultadosDetallados = async function () {
-            document.getElementById("quiniela-container").style.display = "none";
-            document.getElementById("resultados-detallados").style.display = "block";
-
-            const lista = document.getElementById("lista-resultados");
-            lista.innerHTML = "";
-
-            const querySnapshot = await getDocs(collection(db, "participantes"));
-            querySnapshot.forEach(doc => {
-                const data = doc.data();
-                const resultados = data.resultados || [];
-                const puntos = data.puntos || 0;
-
-                const item = document.createElement("li");
-                item.innerHTML = `
-                    <h3>${data.nombre || "Sin nombre"} - ${puntos} puntos</h3>
-                    <ul>
-                        ${resultados.map((res, i) => `<li>Partido ${i + 1}: ${res.local} - ${res.visitante}</li>`).join("")}
-                    </ul>
-                `;
-                lista.appendChild(item);
-            });
-        };
-
-        window.mostrarQuiniela = function () {
-            document.getElementById("quiniela-container").style.display = "block";
-            document.getElementById("resultados-detallados").style.display = "none";
-        };
-    </script>
+    <script type="module" src="script.js"></script>
 </body>
 </html>
