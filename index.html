@@ -13,7 +13,8 @@
 </head>
 
 <body>
-    <div class="container">
+    <!-- Contenedor principal de la quiniela -->
+    <div class="container" id="quiniela-container">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
         <h1>Semifinales Champions League 2025</h1>
 
@@ -39,7 +40,7 @@
         <div class="partido">
             <div class="equipos">
                 <div class="equipo">
-                    <img src="logos/barcelona.png" alt="Barcelona">
+                    <img src="logos/barecelona.png" alt="Barcelona">
                     <span>BARCELONA</span>
                 </div>
                 <div class="inputs">
@@ -47,8 +48,8 @@
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/borussia.png" alt="Borussia Dortmund">
-                    <span>BORUSSIA DORTMUND</span>
+                    <img src="logos/borusia.png" alt="Borussia Dortmund">
+                    <span>BORUSIA DORTMUND</span>
                 </div>
             </div>
         </div>
@@ -83,7 +84,7 @@
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/bayern.png" alt="Bayern Munich">
+                    <img src="logos/bayer.png" alt="Bayern Munich">
                     <span>BAYERN MUNICH</span>
                 </div>
             </div>
@@ -96,6 +97,7 @@
             <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
         </div>
         <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
+        <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
 
         <div id="mi-quiniela" style="display: none;">
             <h2>Tu Quiniela</h2>
@@ -108,8 +110,18 @@
             <h2>Tabla de Participantes</h2>
             <ul id="lista-participantes"></ul>
         </div>
+    </div>
 
-        <a href="resultados.html" class="button" style="margin-top: 20px;">Ver Resultados Detallados</a>
+    <!-- Contenedor de resultados detallados -->
+    <div class="container" id="resultados-detallados" style="display: none;">
+        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+        <h1>Resultados Detallados</h1>
+
+        <div id="resultados">
+            <ul id="lista-resultados"></ul>
+        </div>
+
+        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
     </div>
 
     <!-- Firebase SDK -->
@@ -191,33 +203,34 @@
             document.getElementById("mi-quiniela").style.display = "block";
         };
 
-        window.mostrarTablaParticipantes = async function () {
-            const lista = document.getElementById("lista-participantes");
+        window.mostrarResultadosDetallados = async function () {
+            document.getElementById("quiniela-container").style.display = "none";
+            document.getElementById("resultados-detallados").style.display = "block";
+
+            const lista = document.getElementById("lista-resultados");
             lista.innerHTML = "";
 
             const querySnapshot = await getDocs(collection(db, "participantes"));
             querySnapshot.forEach(doc => {
                 const data = doc.data();
+                const resultados = data.resultados || [];
                 const puntos = data.puntos || 0;
-
-                // Crear barra de progreso
-                const progressBar = document.createElement("div");
-                progressBar.className = "progress-bar";
-                progressBar.style.width = `${(puntos / 8) * 100}%`;
 
                 const item = document.createElement("li");
                 item.innerHTML = `
-                    <span>${data.nombre || "Sin nombre"} - ${puntos} puntos</span>
-                    <div class="progress-container">
-                        ${progressBar.outerHTML}
-                    </div>
+                    <h3>${data.nombre || "Sin nombre"} - ${puntos} puntos</h3>
+                    <ul>
+                        ${resultados.map((res, i) => `<li>Partido ${i + 1}: ${res.local} - ${res.visitante}</li>`).join("")}
+                    </ul>
                 `;
                 lista.appendChild(item);
             });
         };
 
-        // Cargar la tabla de participantes al cargar la página
-        mostrarTablaParticipantes();
+        window.mostrarQuiniela = function () {
+            document.getElementById("quiniela-container").style.display = "block";
+            document.getElementById("resultados-detallados").style.display = "none";
+        };
     </script>
 </body>
 </html>
