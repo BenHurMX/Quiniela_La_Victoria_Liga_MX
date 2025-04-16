@@ -117,7 +117,13 @@ window.mostrarResultadosDetallados = async function () {
         item.innerHTML = `
             <h3>${data.nombre || "Sin nombre"}</h3>
             <ul>
-                ${resultados.map((res, i) => `<li>Partido ${i + 1}: ${res.local} - ${res.visitante}</li>`).join("")}
+                ${resultados.map((res, i) => `
+                    <li>
+                        <img src="logos/equipo${i + 1}-local.png" alt="Local" class="logo-pequeno" />
+                        ${res.local} - ${res.visitante}
+                        <img src="logos/equipo${i + 1}-visitante.png" alt="Visitante" class="logo-pequeno" />
+                    </li>
+                `).join("")}
             </ul>
         `;
         lista.appendChild(item);
@@ -127,6 +133,8 @@ window.mostrarResultadosDetallados = async function () {
 window.mostrarQuiniela = function () {
     document.getElementById("quiniela-container").style.display = "block";
     document.getElementById("marcador-real").style.display = "none";
+    document.getElementById("resultados-detallados").style.display = "none";
+    document.getElementById("configurar-resultados").style.display = "none";
 };
 
 import { doc, onSnapshot } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";

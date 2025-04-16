@@ -230,3 +230,23 @@ h1 {
     padding: 10px;
   }
 }
+
+.logo-pequeno {
+  width: 30px; /* Tamaño del logo */
+  height: auto;
+  margin: 0 5px; /* Espaciado entre el logo y el texto */
+  vertical-align: middle; /* Alinea el logo con el texto */
+}
+
+.resultado-detallado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.resultado-detallado span {
+  margin: 0 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
