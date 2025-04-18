@@ -1,0 +1,15 @@
+{
+  "name": "quiniela.la.victoria.champions",
+  "version": "1.0.0",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/BenHurMX/Quiniela_La_Victoria_Champions.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

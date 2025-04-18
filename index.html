@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiniela La Victoria - Champions</title>
+
+    <!-- Fuente Bebas Neue de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
+
+    <!-- Tu hoja de estilos -->
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <!-- Contenedor principal de la quiniela -->
+    <div class="container" id="quiniela-container">
+        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+        <h1>Liga MX Jornada 15</h1>
+
+        <!-- Partido 1 -->
+        <div class="partido">
+            <div class="equipos">
+                <div class="equipo">
+                    <img src="logos/madrid.png" alt="Real Madrid">
+                    <span>REAL MADRID</span>
+                </div>
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+                <div class="equipo">
+                    <img src="logos/arsenal.png" alt="Arsenal">
+                    <span>ARSENAL</span>
+                </div>
+            </div>
+        </div>
+
+    
+        <!-- Partido 4 -->
+        <div class="partido">
+            <div class="equipos">
+                <div class="equipo">
+                    <img src="logos/inter.png" alt="Inter Milan">
+                    <span>INTER MILAN</span>
+                </div>
+                <div class="inputs">
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                    <input type="number" placeholder="0" min="0" class="marcador" />
+                </div>
+                <div class="equipo">
+                    <img src="logos/bayer.png" alt="Bayern Munich">
+                    <span>BAYERN MUNICH</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario -->
+<!-- Formulario -->
+<div class="form">
+    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+    <label for="comprobante">Adjuntar comprobante de transferencia:</label>
+    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
+    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+</div>
+<button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
+<button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
+<button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
+
+<div id="mi-quiniela" style="display: none;">
+    <h2>Tu Quiniela</h2>
+    <ul id="lista-mi-quiniela"></ul>
+    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+</div>
+
+<hr />
+
+       
+    </div>
+
+    <!-- Contenedor de marcador real -->
+    <div class="container" id="marcador-real" style="display: none;">
+        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+        <h1>Marcador Real</h1>
+
+        <div id="puntos">
+            <ul id="lista-puntos"></ul>
+        </div>
+
+        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+    </div>
+<!-- Contenedor de resultados detallados -->
+<div class="container" id="resultados-detallados" style="display: none;">
+    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+    <h1>Resultados Detallados</h1>
+
+    <div id="detalles">
+        <ul id="lista-detallada"></ul>
+    </div>
+
+    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+</div>
+
+    <!-- Firebase SDK -->
+    <script type="module" src="script.js"></script>
+</body>
+</html>
