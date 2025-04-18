@@ -1,5 +1,5 @@
 // Función para enviar la quiniela
-function enviarQuiniela() {
+async function enviarQuiniela() {
     // Obtén los valores de los campos del formulario
     const nombre = document.getElementById("nombre").value;
     const whatsapp = document.getElementById("whatsapp").value;
@@ -11,16 +11,28 @@ function enviarQuiniela() {
         return;
     }
 
-    // Simula el envío de la quiniela
-    alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
+    try {
+        // Guarda los datos en Firebase Firestore
+        await addDoc(collection(db, "participantes"), {
+            nombre: nombre,
+            whatsapp: whatsapp,
+            fechaEnvio: new Date().toISOString(),
+        });
 
-    // Oculta todos los contenedores
-    document.getElementById("quiniela-container").style.display = "none";
-    document.getElementById("marcador-real").style.display = "none";
-    document.getElementById("resultados-detallados").style.display = "none";
+        // Simula el envío de la quiniela
+        alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
 
-    // Muestra el contenedor de "mi-quiniela"
-    document.getElementById("mi-quiniela").style.display = "block";
+        // Oculta todos los contenedores
+        document.getElementById("quiniela-container").style.display = "none";
+        document.getElementById("marcador-real").style.display = "none";
+        document.getElementById("resultados-detallados").style.display = "none";
+
+        // Muestra el contenedor de "mi-quiniela"
+        document.getElementById("mi-quiniela").style.display = "block";
+    } catch (error) {
+        console.error("Error al enviar la quiniela: ", error);
+        alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
+    }
 }
 
 // Función para volver a la Quiniela principal
