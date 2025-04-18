@@ -20,14 +20,14 @@ const storage = getStorage(app);
 
 // Función para enviar la quiniela
 async function enviarQuiniela() {
-    // Obtén los valores de los campos del formulario
+    console.log("Botón ENVIAR QUINIELA presionado");
+
     const nombre = document.getElementById("nombre").value;
     const whatsapp = document.getElementById("whatsapp").value;
     const comprobante = document.getElementById("comprobante").files[0];
 
     console.log("Datos del formulario:", { nombre, whatsapp, comprobante });
 
-    // Verifica que todos los campos estén llenos
     if (!nombre || !whatsapp || !comprobante) {
         alert("Por favor, completa todos los campos antes de enviar.");
         return;
@@ -35,13 +35,11 @@ async function enviarQuiniela() {
 
     try {
         console.log("Subiendo archivo a Firebase Storage...");
-        // Sube el archivo a Firebase Storage
         const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
         await uploadBytes(storageRef, comprobante);
         const comprobanteURL = await getDownloadURL(storageRef);
 
         console.log("Guardando datos en Firestore...");
-        // Guarda los datos en Firestore
         await addDoc(collection(db, "participantes"), {
             nombre: nombre,
             whatsapp: whatsapp,
@@ -58,13 +56,12 @@ async function enviarQuiniela() {
 
 // Función para calcular y actualizar la bolsa acumulada
 function actualizarBolsaAcumulada(participantes) {
-    const montoPorParticipante = 50; // Cada participante aporta $50
-    const porcentajeBolsa = 0.8; // Solo se muestra el 80%
+    console.log("Actualizando bolsa acumulada...");
+    const montoPorParticipante = 50;
+    const porcentajeBolsa = 0.8;
 
-    // Calcula el monto total de la bolsa acumulada
     const bolsaTotal = participantes * montoPorParticipante * porcentajeBolsa;
 
-    // Actualiza el valor en el HTML
     const bolsaElemento = document.getElementById("monto-bolsa");
     bolsaElemento.textContent = bolsaTotal.toLocaleString("es-MX", {
         style: "currency",
@@ -74,17 +71,18 @@ function actualizarBolsaAcumulada(participantes) {
 
 // Ejemplo: Actualizar la bolsa acumulada con un número inicial de participantes
 document.addEventListener("DOMContentLoaded", () => {
-    const numeroDeParticipantes = 1; // Cambia este valor según sea necesario
+    console.log("Página cargada");
+    const numeroDeParticipantes = 1;
     actualizarBolsaAcumulada(numeroDeParticipantes);
 });
 
 // Función para volver a la Quiniela principal
 function mostrarQuiniela() {
-    // Oculta todos los contenedores
+    console.log("Botón VOLVER A QUINIELA presionado");
+
     document.getElementById("mi-quiniela").style.display = "none";
     document.getElementById("marcador-real").style.display = "none";
     document.getElementById("resultados-detallados").style.display = "none";
 
-    // Muestra el contenedor principal
     document.getElementById("quiniela-container").style.display = "block";
 }
