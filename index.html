@@ -18,13 +18,14 @@
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
 
         <!-- Bolsa acumulada -->
-<div id="bolsa-acumulada">
-    <h2>Bolsa Acumulada: $<span id="monto-bolsa">0</span></h2>
-</div>
- 
- 
+        <div id="bolsa-acumulada">
+            <h2>Bolsa Acumulada: <span id="monto-bolsa">0</span></h2>
+        </div>
+
         <h1>Liga MX Jornada 17</h1>
 
+        <!-- Partidos -->
+        <!-- Partido 1 -->
         <div class="partido">
             <p class="fecha">Viernes 18 de abril - 19:00</p>
             <div class="equipos">
@@ -42,8 +43,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 2 - Sábado 19 de abril - 17:00 -->
+
+        <!-- Partido 2 -->
         <div class="partido">
             <p class="fecha">Sábado 19 de abril - 17:00</p>
             <div class="equipos">
@@ -61,8 +62,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 3 - Sábado 19 de abril - 19:00 -->
+
+        <!-- Partido 3 -->
         <div class="partido">
             <p class="fecha">Sábado 19 de abril - 19:00</p>
             <div class="equipos">
@@ -80,8 +81,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 4 - Sábado 19 de abril - 19:05 -->
+
+        <!-- Partido 4 -->
         <div class="partido">
             <p class="fecha">Sábado 19 de abril - 19:05</p>
             <div class="equipos">
@@ -99,8 +100,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 5 - Sábado 19 de abril - 21:00 -->
+
+        <!-- Partido 5 -->
         <div class="partido">
             <p class="fecha">Sábado 19 de abril - 21:00</p>
             <div class="equipos">
@@ -118,8 +119,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 6 - Sábado 19 de abril - 21:10 -->
+
+        <!-- Partido 6 -->
         <div class="partido">
             <p class="fecha">Sábado 19 de abril - 21:10</p>
             <div class="equipos">
@@ -137,8 +138,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 7 - Domingo 20 de abril - 17:00 -->
+
+        <!-- Partido 7 -->
         <div class="partido">
             <p class="fecha">Domingo 20 de abril - 17:00</p>
             <div class="equipos">
@@ -156,8 +157,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 8 - Domingo 20 de abril - 19:00 -->
+
+        <!-- Partido 8 -->
         <div class="partido">
             <p class="fecha">Domingo 20 de abril - 19:00</p>
             <div class="equipos">
@@ -175,8 +176,8 @@
                 </div>
             </div>
         </div>
-        
-        <!-- Partido 9 - Domingo 20 de abril - 19:05 -->
+
+        <!-- Partido 9 -->
         <div class="partido">
             <p class="fecha">Domingo 20 de abril - 19:05</p>
             <div class="equipos">
@@ -195,31 +196,25 @@
             </div>
         </div>
 
-
         <!-- Formulario -->
-<!-- Formulario -->
-<div class="formulario">
-    <label for="nombre">Nombre de usuario:</label>
-    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+        <div class="formulario">
+            <label for="nombre">Nombre de usuario:</label>
+            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
 
-    <label for="whatsapp">Número de WhatsApp:</label>
-    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+            <label for="whatsapp">Número de WhatsApp:</label>
+            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
 
-    <p class="leyenda-comprobante">Adjuntar comprobante de transferencia:</p>
-    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
+            <p class="leyenda-comprobante">Adjuntar comprobante de transferencia:</p>
+            <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
 
-    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-</div>
+            <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+        </div>
 
-<div class="botones-secundarios">
-    <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
-    <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
-    <button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
-</div>
-
-<hr />
-
-       
+        <div class="botones-secundarios">
+            <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
+            <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
+            <button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
+        </div>
     </div>
 
     <!-- Contenedor de marcador real -->
@@ -233,260 +228,18 @@
 
         <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
     </div>
-<!-- Contenedor de resultados detallados -->
-<div class="container" id="resultados-detallados" style="display: none;">
-    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-    <h1>Resultados Detallados</h1>
 
-    <div id="detalles">
-        <ul id="lista-detallada"></ul>
-    </div>
-
-    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
-</div>
-
-    <!-- Firebase SDK -->
-    <script type="module" src="script.js"></script>
-</body>
-</html>
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quiniela La Victoria - Liga MX</title>
-
-    <!-- Fuente Bebas Neue de Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-
-    <!-- Tu hoja de estilos -->
-    <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-    <!-- Contenedor principal de la quiniela -->
-    <div class="container" id="quiniela-container">
+    <!-- Contenedor de resultados detallados -->
+    <div class="container" id="resultados-detallados" style="display: none;">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-        <h1>Liga MX Jornada 16</h1>
+        <h1>Resultados Detallados</h1>
 
-<!-- Partido 1 - Viernes 18 de abril - 19:00 -->
-<div class="partido">
-    <p class="fecha">Viernes 18 de abril - 19:00</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/MAZATLAN2.png" alt="Mazatlán">
-            <span>MAZATLÁN</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/XOLOS.png" alt="FC Juárez">
-            <span>FC JUÁREZ</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 2 - Viernes 18 de abril - 21:00 -->
-<div class="partido">
-    <p class="fecha">Viernes 18 de abril - 21:00</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/SANLUIS.png" alt="Atlético San Luis">
-            <span>ATLÉTICO SAN LUIS</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/TOLUCA.png" alt="Toluca">
-            <span>TOLUCA</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 3 - Viernes 18 de abril - 21:10 -->
-<div class="partido">
-    <p class="fecha">Viernes 18 de abril - 21:10</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/TIJUANA.png" alt="Tijuana">
-            <span>TIJUANA</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/PUEBLA.png" alt="Puebla">
-            <span>PUEBLA</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 4 - Sábado 19 de abril - 17:00 -->
-<div class="partido">
-    <p class="fecha">Sábado 19 de abril - 17:00</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/LEON.png" alt="León">
-            <span>LEÓN</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/MONTERREY.png" alt="Monterrey">
-            <span>MONTERREY</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 5 - Sábado 19 de abril - 19:05 -->
-<div class="partido">
-    <p class="fecha">Sábado 19 de abril - 19:05</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/TIGRES.png" alt="Tigres">
-            <span>TIGRES</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/NECAXA.png" alt="Necaxa">
-            <span>NECAXA</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 6 - Sábado 19 de abril - 19:05 -->
-<div class="partido">
-    <p class="fecha">Sábado 19 de abril - 19:05</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/GUADALAJARA.png" alt="Chivas">
-            <span>CHIVAS</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/QUERETARO.png" alt="Querétaro">
-            <span>QUERÉTARO</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 7 - Sábado 19 de abril - 19:05 -->
-<div class="partido">
-    <p class="fecha">Sábado 19 de abril - 19:05</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/SANTOS.png" alt="Santos Laguna">
-            <span>SANTOS LAGUNA</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/PACHUCA.png" alt="Pachuca">
-            <span>PACHUCA</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 8 - Sábado 19 de abril - 21:10 -->
-<div class="partido">
-    <p class="fecha">Sábado 19 de abril - 21:10</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/PUMAS.png" alt="Pumas">
-            <span>PUMAS</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/AMERICA.png" alt="América">
-            <span>AMÉRICA</span>
-        </div>
-    </div>
-</div>
-
-<!-- Partido 9 - Domingo 20 de abril - 18:00 -->
-<div class="partido">
-    <p class="fecha">Domingo 20 de abril - 18:00</p>
-    <div class="equipos">
-        <div class="equipo">
-            <img src="logos/logos_MX/CRUZ AZUL.png" alt="Cruz Azul">
-            <span>CRUZ AZUL</span>
-        </div>
-        <div class="inputs">
-            <input type="number" placeholder="0" min="0" class="marcador" />
-            <input type="number" placeholder="0" min="0" class="marcador" />
-        </div>
-        <div class="equipo">
-            <img src="logos/logos_MX/ATLAS.png" alt="Atlas">
-            <span>ATLAS</span>
-        </div>
-    </div>
-</div>
-
-
-        <!-- Formulario -->
-<!-- Formulario -->
-<div class="form">
-    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
-    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
-    <label for="comprobante">Adjuntar comprobante de transferencia:</label>
-    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
-    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-</div>
-<button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
-<button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
-<button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
-
-<div id="mi-quiniela" style="display: none;">
-    <h2>Tu Quiniela</h2>
-    <ul id="lista-mi-quiniela"></ul>
-    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
-</div>
-
-<hr />
-
-       
-    </div>
-
-    <!-- Contenedor de marcador real -->
-    <div class="container" id="marcador-real" style="display: none;">
-        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-        <h1>Marcador Real</h1>
-
-        <div id="puntos">
-            <ul id="lista-puntos"></ul>
+        <div id="detalles">
+            <ul id="lista-detallada"></ul>
         </div>
 
         <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
     </div>
-<!-- Contenedor de resultados detallados -->
-<div class="container" id="resultados-detallados" style="display: none;">
-    <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-    <h1>Resultados Detallados</h1>
-
-    <div id="detalles">
-        <ul id="lista-detallada"></ul>
-    </div>
-
-    <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
-</div>
 
     <!-- Firebase SDK -->
     <script type="module" src="script.js"></script>
