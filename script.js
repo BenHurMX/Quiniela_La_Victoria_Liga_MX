@@ -1,3 +1,23 @@
+// Importa las funciones necesarias de Firebase
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
+import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+
+// Configuración de Firebase del proyecto
+const firebaseConfig = {
+    apiKey: "AIzaSyC9CKF9N6eBcxTrPTP2LE7RF-ep657dohs",
+    authDomain: "quiniela-la-victoria-46bc3.firebaseapp.com",
+    projectId: "quiniela-la-victoria-46bc3",
+    storageBucket: "quiniela-la-victoria-46bc3.appspot.com",
+    messagingSenderId: "13863862689",
+    appId: "1:13863862689:web:d026cefdefbbcd7c46cbe0"
+};
+
+// Inicializa Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
 // Función para enviar la quiniela
 async function enviarQuiniela() {
     // Obtén los valores de los campos del formulario
@@ -14,57 +34,27 @@ async function enviarQuiniela() {
     }
 
     try {
-        console.log("Intentando guardar en Firebase...");
-        // Guarda los datos en Firebase Firestore
+        console.log("Subiendo archivo a Firebase Storage...");
+        // Sube el archivo a Firebase Storage
+        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
+        await uploadBytes(storageRef, comprobante);
+        const comprobanteURL = await getDownloadURL(storageRef);
+
+        console.log("Guardando datos en Firestore...");
+        // Guarda los datos en Firestore
         await addDoc(collection(db, "participantes"), {
             nombre: nombre,
             whatsapp: whatsapp,
+            comprobanteURL: comprobanteURL,
             fechaEnvio: new Date().toISOString(),
         });
 
-        console.log("Datos guardados en Firebase correctamente.");
         alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
-
-        // Oculta todos los contenedores
-        document.getElementById("quiniela-container").style.display = "none";
-        document.getElementById("marcador-real").style.display = "none";
-        document.getElementById("resultados-detallados").style.display = "none";
-
-        // Muestra el contenedor de "mi-quiniela"
-        document.getElementById("mi-quiniela").style.display = "block";
     } catch (error) {
         console.error("Error al enviar la quiniela: ", error);
         alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
     }
 }
-
-// Función para volver a la Quiniela principal
-function mostrarQuiniela() {
-    // Oculta todos los contenedores
-    document.getElementById("mi-quiniela").style.display = "none";
-    document.getElementById("marcador-real").style.display = "none";
-    document.getElementById("resultados-detallados").style.display = "none";
-
-    // Muestra el contenedor principal
-    document.getElementById("quiniela-container").style.display = "block";
-}
-
-// Configuración de Firebase
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
-
-const firebaseConfig = {
-    apiKey: "AIzaSyABA-13aNDW3tD78fNTufyoF8qm9J2KqxY",
-    authDomain: "quiniela-la-victoria.firebaseapp.com",
-    projectId: "quiniela-la-victoria",
-    storageBucket: "quiniela-la-victoria.appspot.com",
-    messagingSenderId: "394091408215",
-    appId: "1:394091408215:web:xxxxxxxxxxxxxxxx"
-};
-
-// Inicializa Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
 
 // Función para calcular y actualizar la bolsa acumulada
 function actualizarBolsaAcumulada(participantes) {
@@ -88,37 +78,13 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarBolsaAcumulada(numeroDeParticipantes);
 });
 
-import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+// Función para volver a la Quiniela principal
+function mostrarQuiniela() {
+    // Oculta todos los contenedores
+    document.getElementById("mi-quiniela").style.display = "none";
+    document.getElementById("marcador-real").style.display = "none";
+    document.getElementById("resultados-detallados").style.display = "none";
 
-const storage = getStorage(app);
-
-async function enviarQuiniela() {
-    const nombre = document.getElementById("nombre").value;
-    const whatsapp = document.getElementById("whatsapp").value;
-    const comprobante = document.getElementById("comprobante").files[0];
-
-    if (!nombre || !whatsapp || !comprobante) {
-        alert("Por favor, completa todos los campos antes de enviar.");
-        return;
-    }
-
-    try {
-        // Sube el archivo a Firebase Storage
-        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
-        await uploadBytes(storageRef, comprobante);
-        const comprobanteURL = await getDownloadURL(storageRef);
-
-        // Guarda los datos en Firestore
-        await addDoc(collection(db, "participantes"), {
-            nombre: nombre,
-            whatsapp: whatsapp,
-            comprobanteURL: comprobanteURL,
-            fechaEnvio: new Date().toISOString(),
-        });
-
-        alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
-    } catch (error) {
-        console.error("Error al enviar la quiniela: ", error);
-        alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
-    }
+    // Muestra el contenedor principal
+    document.getElementById("quiniela-container").style.display = "block";
 }
