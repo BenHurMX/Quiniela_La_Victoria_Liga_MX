@@ -5,6 +5,8 @@ async function enviarQuiniela() {
     const whatsapp = document.getElementById("whatsapp").value;
     const comprobante = document.getElementById("comprobante").files[0];
 
+    console.log("Datos del formulario:", { nombre, whatsapp, comprobante });
+
     // Verifica que todos los campos estén llenos
     if (!nombre || !whatsapp || !comprobante) {
         alert("Por favor, completa todos los campos antes de enviar.");
@@ -12,6 +14,7 @@ async function enviarQuiniela() {
     }
 
     try {
+        console.log("Intentando guardar en Firebase...");
         // Guarda los datos en Firebase Firestore
         await addDoc(collection(db, "participantes"), {
             nombre: nombre,
@@ -19,7 +22,7 @@ async function enviarQuiniela() {
             fechaEnvio: new Date().toISOString(),
         });
 
-        // Simula el envío de la quiniela
+        console.log("Datos guardados en Firebase correctamente.");
         alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
 
         // Oculta todos los contenedores
@@ -84,3 +87,38 @@ document.addEventListener("DOMContentLoaded", () => {
     const numeroDeParticipantes = 1; // Cambia este valor según sea necesario
     actualizarBolsaAcumulada(numeroDeParticipantes);
 });
+
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
+
+const storage = getStorage(app);
+
+async function enviarQuiniela() {
+    const nombre = document.getElementById("nombre").value;
+    const whatsapp = document.getElementById("whatsapp").value;
+    const comprobante = document.getElementById("comprobante").files[0];
+
+    if (!nombre || !whatsapp || !comprobante) {
+        alert("Por favor, completa todos los campos antes de enviar.");
+        return;
+    }
+
+    try {
+        // Sube el archivo a Firebase Storage
+        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
+        await uploadBytes(storageRef, comprobante);
+        const comprobanteURL = await getDownloadURL(storageRef);
+
+        // Guarda los datos en Firestore
+        await addDoc(collection(db, "participantes"), {
+            nombre: nombre,
+            whatsapp: whatsapp,
+            comprobanteURL: comprobanteURL,
+            fechaEnvio: new Date().toISOString(),
+        });
+
+        alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
+    } catch (error) {
+        console.error("Error al enviar la quiniela: ", error);
+        alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
+    }
+}
