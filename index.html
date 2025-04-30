@@ -22,7 +22,7 @@
             <h2>Bolsa Acumulada: <span id="monto-bolsa">0</span></h2>
         </div>
 
-        <h1>Liga MX Jornada 17</h1>
+        <h1> CHAMPIONS Y COPA </h1>
 
         <!-- Partidos -->
         <!-- Partido 1 -->
@@ -213,20 +213,9 @@
         <div class="botones-secundarios">
             <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
             <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
-            <button class="button" onclick="mostrarMarcadorReal()">Marcador Real</button>
+            <button class="button" onclick="mostrarQuinielaAlMomento()">Quiniela al Momento</button>
         </div>
     </div>
-
-    <!-- Contenedor de marcador real -->
-    <div class="container" id="marcador-real" style="display: none;">
-        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
-        <h1>Marcador Real</h1>
-
-        <div id="puntos">
-            <ul id="lista-puntos"></ul>
-        </div>
-
-        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
     </div>
 
     <!-- Contenedor de resultados detallados -->
@@ -234,8 +223,20 @@
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
         <h1>Resultados Detallados</h1>
 
-        <div id="detalles">
-            <ul id="lista-detallada"></ul>
+        <div id="detalles" class="resultados-grid">
+            <!-- Aquí se mostrarán los resultados de los participantes -->
+        </div>
+
+        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+    </div>
+
+    <!-- Contenedor de quiniela al momento -->
+    <div class="container" id="quiniela-al-momento" style="display: none;">
+        <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
+        <h1>Quiniela al Momento</h1>
+
+        <div id="puntos">
+            <ul id="lista-puntos"></ul>
         </div>
 
         <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>

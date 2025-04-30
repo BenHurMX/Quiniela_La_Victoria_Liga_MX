@@ -1,6 +1,6 @@
 // Importa las funciones necesarias de Firebase
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-app.js";
-import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-storage.js";
 
 // Configuración de Firebase del proyecto
@@ -26,31 +26,27 @@ async function enviarQuiniela() {
     const whatsapp = document.getElementById("whatsapp").value;
     const comprobante = document.getElementById("comprobante").files[0];
 
-    console.log("Datos del formulario:", { nombre, whatsapp, comprobante });
-
     if (!nombre || !whatsapp || !comprobante) {
         alert("Por favor, completa todos los campos antes de enviar.");
         return;
     }
 
     try {
-        console.log("Subiendo archivo a Firebase Storage...");
         const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
         await uploadBytes(storageRef, comprobante);
         const comprobanteURL = await getDownloadURL(storageRef);
 
-        console.log("Guardando datos en Firestore...");
         await addDoc(collection(db, "participantes"), {
-            nombre: nombre,
-            whatsapp: whatsapp,
-            comprobanteURL: comprobanteURL,
+            nombre,
+            whatsapp,
+            comprobanteURL,
             fechaEnvio: new Date().toISOString(),
         });
 
-        alert(`Quiniela enviada por ${nombre} con el número ${whatsapp}.`);
+        alert(`Quiniela enviada por ${nombre}.`);
     } catch (error) {
         console.error("Error al enviar la quiniela: ", error);
-        alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
+        alert("Hubo un error al enviar la quiniela.");
     }
 }
 
@@ -69,20 +65,59 @@ function actualizarBolsaAcumulada(participantes) {
     });
 }
 
-// Ejemplo: Actualizar la bolsa acumulada con un número inicial de participantes
-document.addEventListener("DOMContentLoaded", () => {
-    console.log("Página cargada");
-    const numeroDeParticipantes = 1;
-    actualizarBolsaAcumulada(numeroDeParticipantes);
-});
+// Función para mostrar los resultados detallados
+async function mostrarResultadosDetallados() {
+    console.log("Botón VER RESULTADOS DETALLADOS presionado");
+
+    document.getElementById("quiniela-container").style.display = "none";
+    document.getElementById("resultados-detallados").style.display = "block";
+
+    const detalles = document.getElementById("detalles");
+    detalles.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "participantes"));
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const participanteHTML = `
+            <div class="participante">
+                <h3>${data.nombre}</h3>
+                <p>WhatsApp: ${data.whatsapp}</p>
+                <img src="${data.comprobanteURL}" alt="Comprobante" />
+            </div>
+        `;
+        detalles.innerHTML += participanteHTML;
+    });
+}
+
+// Función para mostrar la quiniela al momento
+async function mostrarQuinielaAlMomento() {
+    console.log("Botón QUINIELA AL MOMENTO presionado");
+
+    document.getElementById("quiniela-container").style.display = "none";
+    document.getElementById("quiniela-al-momento").style.display = "block";
+
+    const listaPuntos = document.getElementById("lista-puntos");
+    listaPuntos.innerHTML = "";
+
+    const querySnapshot = await getDocs(collection(db, "participantes"));
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+        const puntosHTML = `
+            <li>${data.nombre}: <progress value="50" max="100"></progress> 50 puntos</li>
+        `;
+        listaPuntos.innerHTML += puntosHTML;
+    });
+}
 
 // Función para volver a la Quiniela principal
 function mostrarQuiniela() {
-    console.log("Botón VOLVER A QUINIELA presionado");
-
-    document.getElementById("mi-quiniela").style.display = "none";
-    document.getElementById("marcador-real").style.display = "none";
-    document.getElementById("resultados-detallados").style.display = "none";
-
     document.getElementById("quiniela-container").style.display = "block";
+    document.getElementById("resultados-detallados").style.display = "none";
+    document.getElementById("quiniela-al-momento").style.display = "none";
 }
+
+// Exporta las funciones al contexto global
+window.enviarQuiniela = enviarQuiniela;
+window.mostrarResultadosDetallados = mostrarResultadosDetallados;
+window.mostrarQuinielaAlMomento = mostrarQuinielaAlMomento;
+window.mostrarQuiniela = mostrarQuiniela;

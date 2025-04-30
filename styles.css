@@ -262,3 +262,15 @@ h1 {
   font-size: 24px; /* Ajusta el tamaño del texto */
   margin-top: 10px;
 }
+
+.resultados-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.participante {
+  text-align: center;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
