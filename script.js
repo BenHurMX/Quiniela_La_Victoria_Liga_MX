@@ -24,29 +24,25 @@ async function enviarQuiniela() {
 
     const nombre = document.getElementById("nombre").value;
     const whatsapp = document.getElementById("whatsapp").value;
-    const comprobante = document.getElementById("comprobante").files[0];
 
-    if (!nombre || !whatsapp || !comprobante) {
+    // Validar que los campos no estén vacíos
+    if (!nombre || !whatsapp) {
         alert("Por favor, completa todos los campos antes de enviar.");
         return;
     }
 
     try {
-        const storageRef = ref(storage, `comprobantes/${comprobante.name}`);
-        await uploadBytes(storageRef, comprobante);
-        const comprobanteURL = await getDownloadURL(storageRef);
-
+        console.log("Guardando datos en Firestore...");
         await addDoc(collection(db, "participantes"), {
             nombre,
             whatsapp,
-            comprobanteURL,
             fechaEnvio: new Date().toISOString(),
         });
 
         alert(`Quiniela enviada por ${nombre}.`);
     } catch (error) {
         console.error("Error al enviar la quiniela: ", error);
-        alert("Hubo un error al enviar la quiniela.");
+        alert("Hubo un error al enviar la quiniela. Por favor, inténtalo de nuevo.");
     }
 }
 

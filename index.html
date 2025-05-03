@@ -1,16 +1,19 @@
-<!DOCTYPE html>
-<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+    <!-- 🔐 Política de seguridad CSP colocada correctamente -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' https://www.gstatic.com https://www.googleapis.com; object-src 'none';">
+  
     <title>Quiniela La Victoria - Liga MX</title>
-
+  
     <!-- Fuente Bebas Neue de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-
+  
     <!-- Tu hoja de estilos -->
     <link rel="stylesheet" href="styles.css" />
-</head>
+  </head>
+  
 
 <body>
     <!-- Contenedor principal de la quiniela -->
@@ -196,19 +199,23 @@
             </div>
         </div>
 
-        <!-- Formulario -->
-        <div class="formulario">
-            <label for="nombre">Nombre de usuario:</label>
-            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+        <!-- Formulario modificado -->
+<div class="formulario">
+    <label for="nombre">Nombre de usuario:</label>
+    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
 
-            <label for="whatsapp">Número de WhatsApp:</label>
-            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+    <label for="whatsapp">Número de WhatsApp:</label>
+    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+    <p style="color: yellow; font-size: 14px;">
+        Nota: Por el momento no es necesario adjuntar un comprobante. Solo ingresa tu nombre y número de WhatsApp.
+    </p>
 
-            <p class="leyenda-comprobante">Adjuntar comprobante de transferencia:</p>
-            <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required />
+    <!-- Campo de comprobante eliminado temporalmente -->
+    <!-- <p class="leyenda-comprobante">Adjuntar comprobante de transferencia:</p>
+    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required /> -->
 
-            <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-        </div>
+    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
+</div>
 
         <div class="botones-secundarios">
             <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
