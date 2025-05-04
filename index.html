@@ -1,9 +1,11 @@
+<!DOCTYPE html>
+<html lang="es">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
     <!-- 🔐 Política de seguridad CSP colocada correctamente -->
-    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' https://www.gstatic.com https://www.googleapis.com; object-src 'none';">
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://www.googleapis.com; object-src 'none';">
   
     <title>Quiniela La Victoria - Liga MX</title>
   
@@ -12,9 +14,7 @@
   
     <!-- Tu hoja de estilos -->
     <link rel="stylesheet" href="styles.css" />
-  </head>
-  
-
+</head>
 <body>
     <!-- Contenedor principal de la quiniela -->
     <div class="container" id="quiniela-container">
@@ -25,204 +25,117 @@
             <h2>Bolsa Acumulada: <span id="monto-bolsa">0</span></h2>
         </div>
 
-        <h1> CHAMPIONS Y COPA </h1>
+        <h1>CHAMPIONS Y COPA</h1>
 
         <!-- Partidos -->
         <!-- Partido 1 -->
         <div class="partido">
-            <p class="fecha">Viernes 18 de abril - 19:00</p>
+            <p class="fecha">Viernes 3 de mayo - 19:00</p>
             <div class="equipos">
                 <div class="equipo">
-                    <img src="logos/logos_MX/PUEBLA.png" alt="Puebla">
-                    <span>PUEBLA</span>
+                    <span>MORELIA</span>
+                    <div class="logo-container">
+                        <img src="logos/MORELIA.png" alt="Morelia">
+                    </div>
                 </div>
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/logos_MX/NECAXA.png" alt="Necaxa">
-                    <span>NECAXA</span>
+                    <span>LEONES NEGROS</span>
+                    <div class="logo-container">
+                        <img src="logos/LEONES.png" alt="Leones Negros">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Partido 2 -->
         <div class="partido">
-            <p class="fecha">Sábado 19 de abril - 17:00</p>
+            <p class="fecha">Miércoles 8 de mayo - 13:00</p>
             <div class="equipos">
                 <div class="equipo">
-                    <img src="logos/logos_MX/AMERICA.png" alt="América">
-                    <span>AMÉRICA</span>
+                    <span>BARCELONA</span>
+                    <div class="logo-container">
+                        <img src="logos/barecelona.png" alt="Barcelona">
+                    </div>
                 </div>
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/logos_MX/MAZATLAN2.png" alt="Mazatlán">
-                    <span>MAZATLÁN</span>
+                    <span>INTER</span>
+                    <div class="logo-container">
+                        <img src="logos/INTER.png" alt="Inter">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Partido 3 -->
         <div class="partido">
-            <p class="fecha">Sábado 19 de abril - 19:00</p>
+            <p class="fecha">Martes 7 de mayo - 13:00</p>
             <div class="equipos">
                 <div class="equipo">
-                    <img src="logos/logos_MX/JUAREZ.png" alt="FC Juárez">
-                    <span>FC JUÁREZ</span>
+                    <span>PSG</span>
+                    <div class="logo-container">
+                        <img src="logos/paris.png" alt="PSG">
+                    </div>
                 </div>
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/logos_MX/QUERETARO.png" alt="Querétaro">
-                    <span>QUERÉTARO</span>
+                    <span>ARSENAL</span>
+                    <div class="logo-container">
+                        <img src="logos/arsenal.png" alt="Arsenal">
+                    </div>
                 </div>
             </div>
         </div>
 
         <!-- Partido 4 -->
         <div class="partido">
-            <p class="fecha">Sábado 19 de abril - 19:05</p>
+            <p class="fecha">Domingo 5 de mayo - 17:00</p>
             <div class="equipos">
                 <div class="equipo">
-                    <img src="logos/logos_MX/TOLUCA.png" alt="Toluca">
-                    <span>TOLUCA</span>
+                    <span>LEONES NEGROS</span>
+                    <img src="logos/LEONES.png" alt="Leones Negros">
                 </div>
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
                     <input type="number" placeholder="0" min="0" class="marcador" />
                 </div>
                 <div class="equipo">
-                    <img src="logos/logos_MX/CRUZ AZUL.png" alt="Cruz Azul">
-                    <span>CRUZ AZUL</span>
+                    <span>MORELIA</span>
+                    <img src="logos/MORELIA.png" alt="Morelia">
                 </div>
             </div>
         </div>
 
-        <!-- Partido 5 -->
-        <div class="partido">
-            <p class="fecha">Sábado 19 de abril - 21:00</p>
-            <div class="equipos">
-                <div class="equipo">
-                    <img src="logos/logos_MX/TIGRES.png" alt="Tigres">
-                    <span>TIGRES</span>
-                </div>
-                <div class="inputs">
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                </div>
-                <div class="equipo">
-                    <img src="logos/logos_MX/PUMAS.png" alt="Pumas UNAM">
-                    <span>PUMAS UNAM</span>
-                </div>
-            </div>
+        <!-- Formulario -->
+        <div class="formulario">
+            <label for="nombre">Nombre de usuario:</label>
+            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+
+            <label for="whatsapp">Número de WhatsApp:</label>
+            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+            <p style="color: yellow; font-size: 14px;">
+                Nota: Por el momento no es necesario adjuntar un comprobante. Solo ingresa tu nombre y número de WhatsApp.
+            </p>
+
+            <button class="button" id="boton-enviar">ENVIAR QUINIELA</button>
         </div>
 
-        <!-- Partido 6 -->
-        <div class="partido">
-            <p class="fecha">Sábado 19 de abril - 21:10</p>
-            <div class="equipos">
-                <div class="equipo">
-                    <img src="logos/logos_MX/ATLAS.png" alt="Atlas">
-                    <span>ATLAS</span>
-                </div>
-                <div class="inputs">
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                </div>
-                <div class="equipo">
-                    <img src="logos/logos_MX/GUADALAJARA.png" alt="Chivas">
-                    <span>CHIVAS</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partido 7 -->
-        <div class="partido">
-            <p class="fecha">Domingo 20 de abril - 17:00</p>
-            <div class="equipos">
-                <div class="equipo">
-                    <img src="logos/logos_MX/SANTOS.png" alt="Santos Laguna">
-                    <span>SANTOS LAGUNA</span>
-                </div>
-                <div class="inputs">
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                </div>
-                <div class="equipo">
-                    <img src="logos/logos_MX/TIJUANA.png" alt="Tijuana">
-                    <span>TIJUANA</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partido 8 -->
-        <div class="partido">
-            <p class="fecha">Domingo 20 de abril - 19:00</p>
-            <div class="equipos">
-                <div class="equipo">
-                    <img src="logos/logos_MX/SANLUIS.png" alt="Atlético San Luis">
-                    <span>ATLÉTICO SAN LUIS</span>
-                </div>
-                <div class="inputs">
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                </div>
-                <div class="equipo">
-                    <img src="logos/logos_MX/PACHUCA.png" alt="Pachuca">
-                    <span>PACHUCA</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Partido 9 -->
-        <div class="partido">
-            <p class="fecha">Domingo 20 de abril - 19:05</p>
-            <div class="equipos">
-                <div class="equipo">
-                    <img src="logos/logos_MX/LEON.png" alt="León">
-                    <span>LEÓN</span>
-                </div>
-                <div class="inputs">
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                    <input type="number" placeholder="0" min="0" class="marcador" />
-                </div>
-                <div class="equipo">
-                    <img src="logos/logos_MX/MONTERREY.png" alt="Monterrey">
-                    <span>MONTERREY</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- Formulario modificado -->
-<div class="formulario">
-    <label for="nombre">Nombre de usuario:</label>
-    <input type="text" placeholder="Nombre de usuario" id="nombre" required />
-
-    <label for="whatsapp">Número de WhatsApp:</label>
-    <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
-    <p style="color: yellow; font-size: 14px;">
-        Nota: Por el momento no es necesario adjuntar un comprobante. Solo ingresa tu nombre y número de WhatsApp.
-    </p>
-
-    <!-- Campo de comprobante eliminado temporalmente -->
-    <!-- <p class="leyenda-comprobante">Adjuntar comprobante de transferencia:</p>
-    <input type="file" id="comprobante" accept=".jpg,.jpeg,.png,.pdf" required /> -->
-
-    <button class="button" onclick="enviarQuiniela()">ENVIAR QUINIELA</button>
-</div>
-
+        <!-- Botones secundarios -->
         <div class="botones-secundarios">
-            <button class="button" onclick="verMiQuiniela()">Ver mi Quiniela</button>
-            <button class="button" onclick="mostrarResultadosDetallados()">Ver Resultados Detallados</button>
-            <button class="button" onclick="mostrarQuinielaAlMomento()">Quiniela al Momento</button>
+            <button class="button" id="boton-ver-mi-quiniela">Ver mi Quiniela</button>
+            <button class="button" id="boton-resultados">Ver Resultados Detallados</button>
+            <button class="button" id="boton-quiniela-momento">Quiniela al Momento</button>
         </div>
-    </div>
     </div>
 
     <!-- Contenedor de resultados detallados -->
@@ -234,7 +147,7 @@
             <!-- Aquí se mostrarán los resultados de los participantes -->
         </div>
 
-        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+        <button class="button" id="boton-volver-detallados">Volver a la Quiniela</button>
     </div>
 
     <!-- Contenedor de quiniela al momento -->
@@ -246,7 +159,7 @@
             <ul id="lista-puntos"></ul>
         </div>
 
-        <button class="button" onclick="mostrarQuiniela()">Volver a la Quiniela</button>
+        <button class="button" id="boton-volver-momento">Volver a la Quiniela</button>
     </div>
 
     <!-- Firebase SDK -->

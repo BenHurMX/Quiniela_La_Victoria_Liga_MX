@@ -1,6 +1,6 @@
 /* Estilo general del cuerpo */
 body {
-  background-image: url("logos/fondo.png");
+  background-image: url("logos/fondo_azul.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -90,7 +90,27 @@ h1 {
   width: 80px; /* Ajusta el tamaño deseado */
   height: auto; /* Mantiene la proporción de la imagen */
   margin-bottom: 10px;
-  background-color: transparent;
+  background-color: transparent; /* Asegura que el fondo sea transparente */
+  border-radius: 50%; /* Hace que las imágenes sean circulares */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra suave */
+  object-fit: cover; /* Asegura que la imagen se recorte correctamente */
+}
+.logo-container {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: transparent; /* Fondo transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden; /* Recorta la imagen dentro del círculo */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra suave */
+}
+
+.logo-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ajusta la imagen dentro del contenedor */
 }
 
 /* Inputs para los marcadores */
