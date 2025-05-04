@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-    <!-- 🔐 Política de seguridad CSP colocada correctamente -->
+    
+    <!-- 🔐 Política de seguridad CSP -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.gstatic.com https://www.googleapis.com; object-src 'none';">
-  
+
     <title>Quiniela La Victoria - Liga MX</title>
-  
+
     <!-- Fuente Bebas Neue de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet" />
-  
-    <!-- Tu hoja de estilos -->
+
+    <!-- Hoja de estilos personalizada -->
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <!-- Contenedor principal de la quiniela -->
+    <!-- Contenedor principal -->
     <div class="container" id="quiniela-container">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
 
@@ -27,7 +27,7 @@
 
         <h1>CHAMPIONS Y COPA</h1>
 
-        <!-- Partidos -->
+        <!-- PARTIDOS -->
         <!-- Partido 1 -->
         <div class="partido">
             <p class="fecha">Viernes 3 de mayo - 19:00</p>
@@ -35,7 +35,7 @@
                 <div class="equipo">
                     <span>MORELIA</span>
                     <div class="logo-container">
-                        <img src="logos/MORELIA.png" alt="Morelia">
+                        <img src="logos/MORELIA.png" alt="Morelia" />
                     </div>
                 </div>
                 <div class="inputs">
@@ -45,7 +45,7 @@
                 <div class="equipo">
                     <span>LEONES NEGROS</span>
                     <div class="logo-container">
-                        <img src="logos/LEONES.png" alt="Leones Negros">
+                        <img src="logos/LEONES.png" alt="Leones Negros" />
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                 <div class="equipo">
                     <span>BARCELONA</span>
                     <div class="logo-container">
-                        <img src="logos/barecelona.png" alt="Barcelona">
+                        <img src="logos/barecelona.png" alt="Barcelona" />
                     </div>
                 </div>
                 <div class="inputs">
@@ -68,7 +68,7 @@
                 <div class="equipo">
                     <span>INTER</span>
                     <div class="logo-container">
-                        <img src="logos/INTER.png" alt="Inter">
+                        <img src="logos/INTER.png" alt="Inter" />
                     </div>
                 </div>
             </div>
@@ -81,7 +81,7 @@
                 <div class="equipo">
                     <span>PSG</span>
                     <div class="logo-container">
-                        <img src="logos/paris.png" alt="PSG">
+                        <img src="logos/paris.png" alt="PSG" />
                     </div>
                 </div>
                 <div class="inputs">
@@ -91,7 +91,7 @@
                 <div class="equipo">
                     <span>ARSENAL</span>
                     <div class="logo-container">
-                        <img src="logos/arsenal.png" alt="Arsenal">
+                        <img src="logos/arsenal.png" alt="Arsenal" />
                     </div>
                 </div>
             </div>
@@ -103,7 +103,9 @@
             <div class="equipos">
                 <div class="equipo">
                     <span>LEONES NEGROS</span>
-                    <img src="logos/LEONES.png" alt="Leones Negros">
+                    <div class="logo-container">
+                        <img src="logos/LEONES.png" alt="Leones Negros" />
+                    </div>
                 </div>
                 <div class="inputs">
                     <input type="number" placeholder="0" min="0" class="marcador" />
@@ -111,7 +113,9 @@
                 </div>
                 <div class="equipo">
                     <span>MORELIA</span>
-                    <img src="logos/MORELIA.png" alt="Morelia">
+                    <div class="logo-container">
+                        <img src="logos/MORELIA.png" alt="Morelia" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -119,10 +123,11 @@
         <!-- Formulario -->
         <div class="formulario">
             <label for="nombre">Nombre de usuario:</label>
-            <input type="text" placeholder="Nombre de usuario" id="nombre" required />
+            <input type="text" id="nombre" placeholder="Nombre de usuario" required />
 
             <label for="whatsapp">Número de WhatsApp:</label>
-            <input type="text" placeholder="Número de WhatsApp" id="whatsapp" required />
+            <input type="text" id="whatsapp" placeholder="Número de WhatsApp" required />
+
             <p style="color: yellow; font-size: 14px;">
                 Nota: Por el momento no es necesario adjuntar un comprobante. Solo ingresa tu nombre y número de WhatsApp.
             </p>
@@ -138,7 +143,7 @@
         </div>
     </div>
 
-    <!-- Contenedor de resultados detallados -->
+    <!-- Resultados Detallados -->
     <div class="container" id="resultados-detallados" style="display: none;">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
         <h1>Resultados Detallados</h1>
@@ -150,7 +155,7 @@
         <button class="button" id="boton-volver-detallados">Volver a la Quiniela</button>
     </div>
 
-    <!-- Contenedor de quiniela al momento -->
+    <!-- Quiniela al Momento -->
     <div class="container" id="quiniela-al-momento" style="display: none;">
         <img src="logos/logo.png" class="logo" alt="Logo Quiniela" />
         <h1>Quiniela al Momento</h1>
@@ -162,7 +167,7 @@
         <button class="button" id="boton-volver-momento">Volver a la Quiniela</button>
     </div>
 
-    <!-- Firebase SDK -->
+    <!-- Firebase + Script principal -->
     <script type="module" src="script.js"></script>
 </body>
 </html>
