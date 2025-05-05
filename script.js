@@ -180,3 +180,58 @@ document.addEventListener("DOMContentLoaded", () => {
     if (botones.volver) botones.volver.addEventListener("click", mostrarQuiniela);
     if (botones.verMiQuiniela) botones.verMiQuiniela.addEventListener("click", verMiQuiniela);
 });
+
+import { onSnapshot, doc, getDocs, collection, updateDoc } from "https://www.gstatic.com/firebasejs/9.22.2/firebase-firestore.js";
+
+// Función para determinar el resultado de un partido
+function obtenerResultado(golesLocal, golesVisitante) {
+  if (golesLocal > golesVisitante) return 'L';
+  if (golesLocal < golesVisitante) return 'V';
+  return 'E'; // Empate
+}
+
+// Escuchar los resultados oficiales y calcular puntajes
+function escucharResultadosOficialesYActualizarPuntajes() {
+  const resultadosDocRef = doc(db, 'configuracion', 'resultadosOficiales');
+
+  onSnapshot(resultadosDocRef, async (docSnap) => {
+    if (!docSnap.exists()) return;
+
+    const resultadosOficiales = docSnap.data().partidos;
+
+    // Obtener todos los participantes
+    const participantesSnapshot = await getDocs(collection(db, 'participantes'));
+
+    participantesSnapshot.forEach(async (docParticipante) => {
+      const participante = docParticipante.data();
+      const pronosticos = participante.resultados || [];
+      let puntaje = 0;
+
+      for (let i = 0; i < resultadosOficiales.length; i++) {
+        const oficial = resultadosOficiales[i];
+        const prediccion = pronosticos[i];
+
+        if (!oficial || !prediccion) continue;
+
+        const golesLocalOficial = parseInt(oficial.local);
+        const golesVisitanteOficial = parseInt(oficial.vistante);
+
+        const golesLocalPred = parseInt(prediccion.local);
+        const golesVisitantePred = parseInt(prediccion.vistante);
+
+        if (golesLocalPred === golesLocalOficial && golesVisitantePred === golesVisitanteOficial) {
+          puntaje += 2;
+        } else if (
+          obtenerResultado(golesLocalPred, golesVisitantePred) ===
+          obtenerResultado(golesLocalOficial, golesVisitanteOficial)
+        ) {
+          puntaje += 1;
+        }
+      }
+
+      await updateDoc(docParticipante.ref, { puntaje: puntaje });
+    });
+  });
+}
+
+escucharResultadosOficialesYActualizarPuntajes();
